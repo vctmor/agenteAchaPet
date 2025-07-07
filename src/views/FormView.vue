@@ -39,7 +39,7 @@
       <div>
         <label for="additionalNotes">Mais detalhes que possam ajudar na busca</label>
       <textarea id="additionalNotes" v-model="additionalNotes"
-        placeholder="Mas com empatia, não vamos impressionar nem angustiars a pessoa tutora, certo!?"></textarea>
+        placeholder=""></textarea>
 
       </div>
 

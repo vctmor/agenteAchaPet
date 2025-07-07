@@ -14,7 +14,22 @@ export function useRegister() {
     item.id = Date.now()
 
     items.push(item)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+
+    try {
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+
+    } catch (error) {
+
+      if (error instanceof DOMException && error.name === 'QuotaExceededError') {
+
+        alert('⚠️ Limite de armazenamento atingido! Apague alguns registros para continuar.')
+
+      } else {
+        console.error('Erro ao salvar registro:', error)
+      }
+    }
+
     return item.id
   }
 
