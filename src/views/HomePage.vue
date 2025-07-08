@@ -2,6 +2,14 @@
   <h3>dd</h3>
 O Projeto AgenteAchaPet
 
+Quando um ser de afetividade desaparece, não é apenas um pet que some - é um laço, um afeto, uma presença que esvanesse.
+Sabemos a ferida abismal que se abre e a ansiedade alucinante que isso traz, porque já passamos por isso.
+Por este motivo elaboramos e estamos colaborando esta plataforma pensada e sentida no intúito de reunir quem precisa de apoio e quem deseja apoiar.
+O projeto é fundamentado na filosofia do líquen e do lobo-guará. O líquen nos traz o conceito mutualismo e nos ensina espécies distintas conseguem viver em harmonia de modo que
+cada um fornesse o que o outro precisa para viver. O lobo-guará carrega a ideia de protocooperação uma vez que ele se alimenta da planta lobeira e esta planta
+contribui para sua nnutrição, mas também para a saúde livrando-o de parasitas mortais. O lobo, por sua vez, dispersa as sementes da planta em um raio de 100km, de
+modo que ao passar pelo intestido do lobo as sementes ficam mais férteis.
+
 O protótipo
 
 Este sistema é um protótipo. Ou seja, seus dados não vão sair do seu navegador. Ele tem praticamente todas as funcionalidades necessárias para 'funcionar de verdade'
