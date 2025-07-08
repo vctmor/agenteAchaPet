@@ -86,6 +86,16 @@
   color: #1b5e20;                 /* Verde escuro Oxóssi */
 }
 
+.navbar{
+
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #c8e6c9;
+}
 
 /* Títulos centralizados */
 .content-container h2,

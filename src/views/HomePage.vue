@@ -28,6 +28,10 @@
   </p>
 </section>
 
+<div class="back-to-top">
+      <a href="#navbar">↑ Voltar ao topo</a>
+</div>
+
 <section id="protótipo" class="section alternate">
   <h2>O Protótipo</h2>
   <p>
@@ -43,6 +47,10 @@
     permitindo oferecer apoio ou informar possíveis avistamentos.
   </p>
 </section>
+
+<div class="back-to-top">
+      <a href="#navbar">↑ Voltar ao topo</a>
+</div>
 
 <section id="financiamento" class="section">
   <h2>Financiamento Coletivo</h2>
@@ -63,6 +71,10 @@
     exigem investimentos financeiros específicos. Portanto, contribuição comunitária será essencial para implementá-las.
   </p>
 </section>
+
+<div class="back-to-top">
+      <a href="#navbar">↑ Voltar ao topo</a>
+</div>
 
 <footer class="footer">
   <p>© 2025 AgenteAchaPet - Todos os direitos reservados</p>
@@ -92,6 +104,11 @@
 /* Ajustes para que a navbar ocupe 100% da largura da .content-container */
 .navbar {
   width: 100%;
+  position: relative;
+  top: 0;
+  /* background-color: inherit; ou defina outra cor de fundo */
+  z-index: 10;
+   left: 0;
   margin-bottom: 2rem;             /* Espaço abaixo da navbar */
 }
 
