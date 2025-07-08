@@ -1,7 +1,6 @@
 <template>
-  <div class="content-container">
-
-     <header class="hero">
+  <div id="app">
+    <header class="hero">
       <h1>Projeto AgenteAchaPet</h1>
     </header>
 
@@ -68,53 +67,35 @@
   <p>© 2025 AgenteAchaPet - Todos os direitos reservados</p>
 </footer>
 
-
   </div>
 </template>
 
-
 <style scoped>
-/* Centraliza o formulário na página */
+/* Container principal centralizado com paleta de Oxóssi */
 .content-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 600px;
+  max-width: 800px;
   margin: 3rem auto;
   padding: 2rem;
-  background-color: #e6f0e6; /* Verde claro (Oxóssi) */
+  background-color: #c8e6c9;      /* Verde claro Oxóssi */
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 64, 0, 0.2);
+  box-shadow: 0 0 12px rgba(27, 94, 32, 0.2);
   font-family: sans-serif;
+  color: #1b5e20;                 /* Verde escuro Oxóssi */
 }
 
-
-/* Ajustes para que a navbar ocupe 100% da largura da .content-container */
-.navbar {
-  width: 100%;
-  margin-bottom: 2rem;             /* Espaço abaixo da navbar */
-}
-
-.navbar ul {
-  display: flex;
-  justify-content: space-around;   /* Distribui igualmente os itens */
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: inherit;                  /* Usa a cor definida em .content-container */
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-}
 
 /* Títulos centralizados */
 .content-container h2,
 .content-container h3 {
   text-align: center;
   margin-bottom: 1rem;
+}
+
+.content-container h2 {
+  font-size: 2rem;
 }
 
 .content-container h3 {
@@ -134,6 +115,7 @@
 .content-container ul {
   list-style: disc inside;
 }
-
 </style>
+
+
 
