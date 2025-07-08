@@ -3,9 +3,10 @@ import { createRouter, createWebHistory} from 'vue-router'
 
 import Testes from '@/views/Testes.vue'
 
-import FormView from '@/views/FormView.vue'
+import FormSearch from '@/views/FormSearch.vue'
 import CartazView from '@/views/CartazView.vue'
 import ListView from '@/views/ListView.vue'
+import HomePage from '@/views/HomePage.vue'
 
 const routes = [
 
@@ -13,9 +14,14 @@ const routes = [
     name: 'testes',
     component: Testes },
 
-  { path: '/',
-    name: 'formView',
-    component: FormView },
+  {
+    path: '/',
+    name: 'inicial',
+    component: HomePage
+  },
+  { path: '/busca',
+    name: 'formSearch',
+    component: FormSearch },
 
   { path: '/cartaz/:id',
     name: 'cartaz',

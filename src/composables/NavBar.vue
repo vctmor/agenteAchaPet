@@ -7,7 +7,7 @@
           ☰
         </button>
         <div :class="['links', { show: menuOpen }]">
-          <RouterLink to="/">Registrar uma busca</RouterLink>
+          <RouterLink to="/busca">Registrar uma busca</RouterLink>
           <!-- <RouterLink to="`/cartaz/${id}`">Cartaz de Busca AtivA</RouterLink> -->
           <RouterLink to="/listar">Listar Buscas Ativas</RouterLink>
         </div>
