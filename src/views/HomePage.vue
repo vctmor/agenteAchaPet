@@ -1,6 +1,6 @@
 <template>
   <div class="content-container">
-
+     <div id="top"></div>
      <header class="hero">
       <h1>Projeto AgenteAchaPet</h1>
     </header>
@@ -29,7 +29,7 @@
 </section>
 
 <div class="back-to-top">
-      <a href="#navbar">↑ Voltar ao topo</a>
+      <a href="#top">↑ Voltar ao topo</a>
 </div>
 
 <section id="protótipo" class="section alternate">
@@ -49,7 +49,7 @@
 </section>
 
 <div class="back-to-top">
-      <a href="#navbar">↑ Voltar ao topo</a>
+      <a href="#top">↑ Voltar ao topo</a>
 </div>
 
 <section id="financiamento" class="section">
@@ -73,7 +73,7 @@
 </section>
 
 <div class="back-to-top">
-      <a href="#navbar">↑ Voltar ao topo</a>
+      <a href="#top">↑ Voltar ao topo</a>
 </div>
 
 <footer class="footer">
