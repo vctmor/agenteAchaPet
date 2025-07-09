@@ -17,7 +17,7 @@
       <h2>Sobre o Projeto</h2>
       <p>
         Quando um animal de estimação desaparece, não se perde apenas um pet, mas também um vínculo afetivo.
-        Entendemos profundamente essa dor e ansiedade, por isso desenvolvemos o AgenteAchaPet, uma plataforma criada para unir pessoas que
+        Entendemos profundamente essa dor e ansiedade, por isso desenvolvemos o <strong>AgenteAchaPet</strong>, uma plataforma criada para unir pessoas que
         precisam de ajuda a quem deseja colaborar.
       </p>
       <p>
@@ -36,21 +36,21 @@
   <section id="protótipo" class="section alternate">
     <h2>O Protótipo</h2>
     <p>
-      Este sistema é um protótipo, ou seja, é para você testar, sentir e nos contar a sua experiêcia. Mas seus dados permanecem apenas no navegador.
+      O <strong>AgenteAchaPet</strong> é um protótipo, ou seja, é para você <a href="busca"  target="_blank">testar</a> - o que você digitar não vai sair do seu computador; sentir e <a href="contato"  target="_blank">nos contar a sua experiêcia</a>.
       Ele possui três funcionalidades principais:
     </p>
     <ul>
       <li>
-        <a href="buscas">Formulário para iniciar uma busca.</a>
+        <a href="busca"  target="_blank">Formulário para iniciar uma busca.</a>
       </li>
 
       <li>
-        <router-link :to="cartazLink">
+        <router-link :to="cartazLink"  target="_blank">
           Cartaz de busca ativa
         </router-link>
       </li>
 
-      <li><a href="listar">Listagem de buscas ativas.</a></li>
+      <li><a href="listar"  target="_blank">Listagem de buscas ativas.</a></li>
     </ul>
     <p>
       Uma nova funcionalidade está em desenvolvimento: no cartaz haverá uma opção para entrar em contato diretamente com quem iniciou a busca,

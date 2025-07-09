@@ -10,6 +10,8 @@
           <RouterLink to="/busca">Registrar uma busca</RouterLink>
           <!-- <RouterLink to="`/cartaz/${id}`">Cartaz de Busca AtivA</RouterLink> -->
           <RouterLink to="/listar">Listar Buscas Ativas</RouterLink>
+          <RouterLink to="/">Sobre o Projeto</RouterLink>
+          <RouterLink to="/contato">Fale Com a Gente</RouterLink>
         </div>
       </div>
     </nav>

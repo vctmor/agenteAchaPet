@@ -7,6 +7,7 @@ import FormSearch from '@/views/FormSearch.vue'
 import CartazView from '@/views/CartazView.vue'
 import ListView from '@/views/ListView.vue'
 import HomePage from '@/views/HomePage.vue'
+import Contato from '@/views/Contato.vue'
 
 const routes = [
 
@@ -30,6 +31,12 @@ const routes = [
   { path: '/listar',
     name: 'listar',
     component: ListView },
+
+  {
+    path: '/contato',
+    name: 'contato',
+    component: Contato
+  },
 ]
 
 export default createRouter({
