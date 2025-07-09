@@ -37,7 +37,7 @@
       <input v-model="location" placeholder="Endereço aproximado." required />
 
       <div>
-        <label for="additionalNotes">Mais detalhes que possam ajudar na busca</label>
+        <label for="additionalNotes">Mais detalhes que possam ajudar na busca (este texto ficará no Cartaz)</label>
       <textarea id="additionalNotes" v-model="additionalNotes"
         placeholder=""></textarea>
 

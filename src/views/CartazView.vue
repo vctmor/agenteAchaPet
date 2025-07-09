@@ -2,8 +2,16 @@
   <div class="cartaz">
     <div v-if="data" class="cartaz-box">
       <h1>🧭 Uma Jornada Começa!</h1>
-      <h2>🐾 {{ data.pet.petName }} foi avistado pela última vez em {{ data.search.location }}</h2>
-      <p>Convocamos toda a comunidade para apoiar <strong>{{ data.person.personName }}</strong>.</p>
+      <h2>🐾 <strong>{{ data.pet.petName }} </strong> foi avistado pela última vez em {{ data.search.location }}</h2>
+      <p>Convocamos toda a comunidade para apoiar <strong>{{ data.person.personName }}</strong> neste momento delicado.</p>
+      <p>Caso você tenha qualquer pista, sugestão, ou palavras de afirmação, não deixe de entrar em contato: </p>
+
+      <ul>
+      <li> <strong>email: </strong> {{ data.person.email }}</li>
+
+      <li> <strong>telefone: </strong> {{ data.person.phone }}</li>
+
+    </ul>
 
       <img :src="data.pet.photo" alt="Pet que está sendo procurado" v-if="data" class="pet-image" />
 
@@ -11,6 +19,8 @@
         <strong>{{ data.pet.petName }} está fora do seu lar desde:</strong>
         {{ formatDate(data.search.disappearanceDate) }}
       </p>
+
+      <p>Detalhes que fazem a diferença: {{ data.search.additionalNotes }}</p>
 
       <div class="share-row">
         <p class="share-link">
