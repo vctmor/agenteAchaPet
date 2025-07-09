@@ -41,7 +41,7 @@
     </p>
     <ul>
       <li>
-        <a href="formSearch">Formulário para iniciar uma busca.</a>
+        <a href="busca">Formulário para iniciar uma busca.</a>
       </li>
 
       <li>
