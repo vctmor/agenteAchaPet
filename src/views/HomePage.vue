@@ -16,14 +16,14 @@
     <section id="sobre" class="section">
       <h2>Sobre o Projeto</h2>
       <p>
-        Quando um animal de estimação desaparece, não se perde apenas um pet, mas também um vínculo afetivo.
+        Quando desaparece um <strong>ser de afetividade</strong> [também chamado de animal de estimação] , não se trata somente de um corpo que não está mais ali, mas também um vínculo afetivo afetivo que modifica drásticamente.
         Entendemos profundamente essa dor e ansiedade, por isso desenvolvemos o <strong>AgenteAchaPet</strong>, uma plataforma criada para unir pessoas que
-        precisam de ajuda a quem deseja colaborar.
+        demandam ajuda às pessoas que desejam participar.
       </p>
       <p>
         Inspirado nas relações simbióticas do líquen e do lobo-guará, o projeto adota os conceitos de mutualismo e protocooperação.
         O líquen representa a harmonia entre espécies diferentes que se beneficiam mutuamente.
-        Já o lobo-guará e a lobeira exemplificam uma parceria em que ambos ganham: o lobo se alimenta e protege sua saúde, enquanto dispersa as sementes da planta,
+        Já o lobo-guará e a lobeira exemplificam uma parceria em que ambos ganham: o lobo se alimenta e protege sua saúde com a lobeira, enquanto dispersa as sementes da planta,
         ajudando-a a proliferar.
       </p>
     </section>
@@ -36,7 +36,8 @@
   <section id="protótipo" class="section alternate">
     <h2>O Protótipo</h2>
     <p>
-      O <strong>AgenteAchaPet</strong> é um protótipo, ou seja, é para você <a href="busca"  target="_blank">testar</a> - o que você digitar não vai sair do seu computador; sentir e <a href="contato"  target="_blank">nos contar a sua experiêcia</a>.
+      A versão atual do <strong>AgenteAchaPet</strong>, esta que você está acessanddo, é um protótipo.
+      Ou seja, o que você digitar não vai sair do seu computador é <a href="busca"  target="_blank">para você testar</a>, sentir e <a href="contato"  target="_blank">nos contar a sua experiêcia</a>.
       Ele possui três funcionalidades principais:
     </p>
     <ul>
@@ -66,16 +67,44 @@
     <h2>Financiamento Coletivo</h2>
     <p>
       "Mas quanto custa!?" você deve estar se perguntando.
-      Bom... para implementar as funcionalidades é grátis - só custa o meu tempo de vida!🤣 No entanto, há ferramentas ou serviços que é preciso primeiro pagar antes de implementar. Daí a importância da comunidade! Quanto mais pessoas financiando, menos custo para cada pessoa.
+      Bom... para implementar as funcionalidades é grátis - só custa o nosso tempo de vida!😅
+      No entanto, há ferramentas ou serviços que é preciso primeiro pagar antes de implementar.
+      Daí a importância da comunidade! Quanto mais pessoas financiando, menos custo para cada pessoa.
     </p>
     <p>
-      O AgenteAchaPet é um projeto comunitário inspirado na cooperação do líquen e do lobo-guará.
-      Assim como o fungo fornece estrutura e a alga fornece energia ao líquen, no projeto, os desenvolvedores constroem o sistema e a comunidade oferece o financiamento.
-      E assim como o lobo-guará espalha as sementes da lobeira, nossa comunidade compartilha o projeto.
+      Por exemplo, <strong>para o Projeto sair do casulo</strong> e funcionar de verdade, será preciso de <strong>R$ 300 por mês</strong> durante o tempo que a comunidadede quiser mantê-lo voando.
+    </p>
+     <p>
+      Isto significa que se 30 pessoas contribuírem, fica R$10 pra cada uma e <strong>TODAS, eu disse TODAS</strong> as pessoas poderão utilizar.😌
+    </p>
+
+    <p> Mas se <strong>TODAS</strong> as pessoas contribuírem, por exemplo, 350 pessoas, fica R$ 0.86 centavos para cada uma!😱
+    </p>
+
+    <p><strong>Nossa! R$ 0.86 centavos, é ou não é uma verdadeira pechincha!?🤣</strong></p>
+
+    <p>
+      Neste sentido, o AgenteAchaPet é um projeto comunitário inspirado no líquen
+      e na relação do lobo-guará com a planta lobeira.
+
+    </p>
+
+    <ul>
+      <li>
+        Para que o liquen exista, é preciso de cooperação: o fungo proporciona a estrutra enquanto a alga fornece energia ao sistema.
+      Em relação ao <strong>AgenteAchaPete</strong> não é diferente: a <strong>Equipe de Desenvolvimento</strong> fornece a estrutura, enquanto a <strong>Comunidade</strong> financia, aplica energia, para que o sistema possa funcionar e ganhar vida.
+
+      </li>
+    </ul>
+   <ul>
+    <li>
+      E assim como o lobo-guará espalha as sementes da lobeira ao se alimetar dela, nossa <strong>Comunidade</strong> compartilha o <strong>Projeto</strong>.
       Ambos os grupos são essenciais—sem um deles, o projeto não se sustenta.
-    </p>
+
+    </li>
+  </ul>
     <p>
-      O financiamento coletivo vai contribuir de imediato para que o AgenteAchaPet possa funcionar de fato para todas as pessoas que precisarem.
+      O financiamento coletivo vai contribuir de imediato para que o <strong>AgenteAchaPet</strong> possa funcionar de fato para todas as pessoas que precisarem.
       A partir daí, ao passo que mais pessoas forem aderindo, outras funcionalidades serão adicionadas.
       Algumas funcionalidades, como envio de mensagens via celular (necessárias para "botão do pânico" ou "notificação de avistamento"),
       exigem investimentos financeiros específicos. Portanto, contribuição comunitária será essencial para implementá-las.
@@ -178,6 +207,12 @@ const cartazLink = computed(() => {
   width: 100%;
   margin-bottom: 1rem;
   text-align: justify;
+}
+.content-container ul {
+  width: 90%;
+  margin-bottom: 1rem;
+  text-align: justify;
+  list-style: disc inside;
 }
 
 /* Estilo para lista com marcadores internos */
