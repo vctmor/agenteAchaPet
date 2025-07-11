@@ -65,6 +65,10 @@
 
   <section id="financiamento" class="section">
     <h2>Financiamento Coletivo</h2>
+
+    <p>
+      Estamos preparando um <strong>Projeto de Financiamento Coletivo</strong> no <a href="https://www.catarse.me/" target="_blank">Catarse.me</a>
+    </p>
     <p>
       "Mas quanto custa!?" você deve estar se perguntando.
       Bom... para implementar as funcionalidades é grátis - só custa o nosso tempo de vida!😅

@@ -11,7 +11,7 @@
     <p>Esta equipe, ou melhor, dupla, está mega empolgada com o Projeto e trabalha nele todos os dias, inclusive agora no feriado [09/07/2025, 19h29]</p>
     <p>Neste sentido, não da pra mensurar a importância da sua devolutiva.</p>
     <p>Porque a partir das suas considerações a Primeira Versão do <strong>AgenteAchaPet</strong> vai ficar do jeito que a comunidade precisa.🥰</p>
-    <p>Portanto, tira o dedo daí, credo,🤭 e esprema o botão <strong>"Enviar" </strong> convicção e contribua com a sua riquíssima opinião/proposta</p>
+    <p>Portanto, tira o dedo daí, credo,🤭 e esprema o botão <strong>"Enviar" </strong> com convicção e contribua com a sua riquíssima opinião/proposta</p>
     </div>
 
     <form target="_blank" action="https://formsubmit.co/victormoreira@vivaldi.net" method="POST">

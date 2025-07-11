@@ -6,8 +6,6 @@
   <p> <a href="/" target="_blank">Clique aqui</a> e conheça melhor o projeto</p>
 </div>
 
-
-
 </template>
 
 
