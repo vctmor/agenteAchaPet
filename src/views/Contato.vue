@@ -6,8 +6,9 @@
           <p>
       Se você está aqui é porque sentiu curiosidade em relação ao Projeto. E isto é muito bacana!☺️🥹
     </p>
-    <p>Atualmente, a Equipe de Desenvolvimento conta com duas pessoas: o Victor Moreira [este aqui quem vos fala! olá tudo bem, como vai?] e a Águida! [......] {bom, ela está fora da área de cobertura no momento!}. Mas está sempe atuante!😌</p>
-    <p>Esta equipe, ou melhor, dupla - tipo o líquen, sabe!? a alga e o fungo!? que atuam juntos!!!!! ah, vá! vocẽ entendeu a referẽncia!😐 - Pois bem, a dupla está mega empolgada com o Projeto e trabalha nele todos os dias, inclusive agora no feriado [09/07/2025, 19h29]</p>
+    <p>Atualmente, a <strong>Equipe de Desenvolvimento</strong> conta com duas pessoas: o <strong>Victor Moreira e a Águida</strong>!
+    </p>
+    <p>Esta equipe, ou melhor, dupla, está mega empolgada com o Projeto e trabalha nele todos os dias, inclusive agora no feriado [09/07/2025, 19h29]</p>
     <p>Neste sentido, não da pra mensurar a importância da sua devolutiva.</p>
     <p>Porque a partir das suas considerações a Primeira Versão do <strong>AgenteAchaPet</strong> vai ficar do jeito que a comunidade precisa.🥰</p>
     <p>Portanto, tira o dedo daí, credo,🤭 e esprema o botão <strong>"Enviar" </strong> convicção e contribua com a sua riquíssima opinião/proposta</p>
