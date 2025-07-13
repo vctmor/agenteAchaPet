@@ -24,11 +24,21 @@
 
 
 <script setup>
-import { computed } from 'vue'
+
+import { computed, onMounted } from 'vue'
 import { useRegister } from '@/composables/useRegister';
 
 const { listing, remove} = useRegister()
+
 const list = computed(() => listing())
+
+
+
+onMounted(() => {
+
+  list
+
+});
 
 function formatDate(dateString) {
 

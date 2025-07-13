@@ -16,10 +16,18 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
+import { onMounted } from 'vue';
 
+import { useRegister } from '@/composables/useRegister'
 import NavBar from './composables/NavBar.vue';
 import PrototypeWarning from './composables/PrototypeWarning.vue';
 
 const route = useRoute()
+const init = useRegister()
+onMounted(() => {
+
+  init;
+})
+
 
 </script>

@@ -6,11 +6,52 @@ export function useRegister() {
 
   const list = ref(JSON.parse(localStorage.getItem(STORAGE_KEY)) || [])
 
+  const init = () => {
+
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+    if (stored && stored.length){
+
+      list.value = stored;
+
+    } else {
+
+      const defaultRegister = {
+        search: {
+          reporterRole: 'Tutor',
+          disappearanceDate: Date.now(),
+          location: 'são paulo',
+          additionalNotes: '',
+          specialNeed: {
+            description: '',
+          }
+        },
+        person: {
+          personName: 'Maurício',
+          phone: '',
+          email: ''
+        },
+        pet: {
+          petName: '',
+          breed: '',
+          color: '',
+          age: '',
+          photo: ''
+        }
+
+      };
+      list.value = [defaultRegister];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list.value))
+    }
+
+  };
+
   const listing = () => list.value
 
   const save = (item) => {
 
     const items = listing()
+
     item.id = Date.now()
 
     items.push(item)
@@ -46,5 +87,8 @@ export function useRegister() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list.value))
   }
 
-  return { list, listing, save, findById, remove }
+
+
+  return { init, listing, save, findById, remove }
 }
+
