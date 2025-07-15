@@ -21,7 +21,7 @@ export function useRegister() {
         search: {
           reporterRole: 'Tutor',
           disappearanceDate: Date.now(),
-          location: 'São Paulo',
+          location: 'Americana',
           additionalNotes: 'Gatinho muito fofinho,tem um coração nas costas',
           specialNeed: {
             description: 'Tem um coração nas costas',

@@ -1,19 +1,20 @@
 <template>
   <div class="listagem">
     <h2>Buscas Ativas</h2>
+
     <div v-if="list.length === 0">Nenhum cadastro ainda.</div>
 
-    <div v-for="data in list" :key="data.id" class="registro">
-
-
+    <div
+      v-for="data in list"
+      :key="data.id"
+      class="registro"
+    >
       <div class="image-wrapper">
-
         <img
-         :src="data.pet?.photo || '@/assets/deu.jpg'" alt="Foto do pet"
+          :src="data.pet?.photo || defaultPhoto"
+          alt="Foto do pet"
         />
-
       </div>
-
 
       <div class="info">
         <p><strong>Nome do pet:</strong> {{ data.pet?.petName }}</p>
@@ -24,7 +25,7 @@
       </div>
 
       <div class="acoes">
-        <router-link :to="`/cartaz/${data.id}`">📄 Visusalizar Cartaz</router-link>
+        <router-link :to="`/cartaz/${data.id}`">📄 Visualizar Cartaz</router-link>
         <button @click="remove(data.id, data.pet?.petName)">❌ Apagar</button>
       </div>
     </div>
@@ -32,28 +33,23 @@
 </template>
 
 <script setup>
-
 import { computed } from 'vue'
-import { useRegister } from '@/composables/useRegister';
+import { useRegister } from '@/composables/useRegister'
 
-const { listing, remove} = useRegister()
-
+const { listing, remove } = useRegister()
 const list = computed(() => listing())
 
+// Foto default se não tiver
+const defaultPhoto = new URL('@/assets/deu.jpg', import.meta.url).href
 
 function formatDate(dateString) {
-
   if (!dateString) return ''
-
   const date = new Date(dateString)
   const day = String(date.getDate()).padStart(2, '0')
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const year = String(date.getFullYear())
-
   return `${day}/${month}/${year}`
 }
-
-
 </script>
 
 <style scoped>
@@ -83,7 +79,7 @@ h2 {
 }
 
 .image-wrapper {
-   width: 200px;
+  width: 200px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 8px;
@@ -130,5 +126,32 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* ✅ MOBILE RESPONSIVO */
+@media (max-width: 600px) {
+  .registro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-wrapper {
+    width: 100%;
+  }
+
+  .image-wrapper img {
+    height: auto;
+  }
+
+  .info {
+    width: 100%;
+  }
+
+  .acoes {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 </style>
