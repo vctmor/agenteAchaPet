@@ -1,64 +1,82 @@
-import { ref } from 'vue'
+import { ref, createApp } from 'vue'
+import FormSearch from '@/views/FormSearch.vue'
+
+const app = createApp(FormSearch)
+
+const DEFAULT_PHOTO = new URL('@/assets/pp.png', import.meta.url).href;
+
+
 
 const STORAGE_KEY = 'registros'
+const instance = app.mount(document.createElement('div'))
+instance.$.exposed.register()
 
 export function useRegister() {
 
   const list = ref(JSON.parse(localStorage.getItem(STORAGE_KEY)) || [])
 
-  const init = () => {
+  if (!Array.isArray(list.value) || list.value.length === 0){
 
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
-
-    if (stored && stored.length){
-
-      list.value = stored;
-
-    } else {
-
-      const defaultRegister = {
+      list.value = [{
         search: {
           reporterRole: 'Tutor',
           disappearanceDate: Date.now(),
-          location: 'são paulo',
-          additionalNotes: '',
+          location: 'São Paulo',
+          additionalNotes: 'Gatinho muito fofinho,tem um coração nas costas',
           specialNeed: {
-            description: '',
+            description: 'Tem um coração nas costas',
           }
         },
         person: {
-          personName: 'Maurício',
-          phone: '',
-          email: ''
+          personName: 'Águida Carneiro',
+          phone: '123-456',
+          email: 'aguida@mega'
         },
         pet: {
-          petName: '',
-          breed: '',
-          color: '',
-          age: '',
-          photo: ''
+          petName: 'Pepê',
+          breed: 'Diferenciada',
+          color: 'algumas',
+          age: '15',
+          photo: DEFAULT_PHOTO
         }
 
-      };
-      list.value = [defaultRegister];
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(list.value))
+      }];
     }
 
-  };
 
   const listing = () => list.value
 
+  const ensureArray = () => {
+
+    if(!Array.isArray(list.value)){
+
+      if(typeof list.value === 'object' && list.value !== null){
+
+        list.value = [list.value]
+
+      }else {
+
+        list.value = [];
+      }
+    }
+  };
+
   const save = (item) => {
 
-    const items = listing()
+    ensureArray()
+
+    if (!item || typeof item !== 'object'){
+
+      throw new Error('Item inválido!');
+    }
 
     item.id = Date.now()
 
-    items.push(item)
+    list.value.push(item)
 
     try {
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list.value))
 
     } catch (error) {
 
@@ -89,6 +107,6 @@ export function useRegister() {
 
 
 
-  return { init, listing, save, findById, remove }
+  return { listing, save, findById, remove }
 }
 

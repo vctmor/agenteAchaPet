@@ -111,6 +111,7 @@ function loadImage(event) {
   let file = event.target.files[0]
 
   if (file){
+
     image.value = file
     preview.value = URL.createObjectURL(file)
   }
@@ -166,7 +167,9 @@ function register() {
   }
 }
 
-
+defineExpose({
+  register,
+});
 
 </script>
 

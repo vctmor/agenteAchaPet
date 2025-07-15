@@ -23,10 +23,10 @@ import NavBar from './composables/NavBar.vue';
 import PrototypeWarning from './composables/PrototypeWarning.vue';
 
 const route = useRoute()
-const init = useRegister()
+
 onMounted(() => {
 
-  init;
+  useRegister
 })
 
 

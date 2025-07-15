@@ -4,41 +4,42 @@
     <div v-if="list.length === 0">Nenhum cadastro ainda.</div>
 
     <div v-for="data in list" :key="data.id" class="registro">
-      <img :src="data.pet.photo" class="preview-img" />
+
+
+      <div class="image-wrapper">
+
+        <img
+         :src="data.pet?.photo || '@/assets/deu.jpg'" alt="Foto do pet"
+        />
+
+      </div>
+
 
       <div class="info">
-        <p><strong>Nome do pet:</strong> {{ data.pet.petName }}</p>
-        <p><strong>Quem convoca a busca:</strong> {{ data.person.personName }}</p>
-        <p><strong>Papel do relator:</strong> {{ data.search.reporterRole }}</p>
-        <p><strong>Data do último avistamento:</strong> {{ formatDate(data.search.disappearanceDate) }}</p>
-        <p><strong>Local do último avistamento:</strong> {{ data.search.location }}</p>
+        <p><strong>Nome do pet:</strong> {{ data.pet?.petName }}</p>
+        <p><strong>Quem convoca a busca:</strong> {{ data.person?.personName }}</p>
+        <p><strong>Papel do relator:</strong> {{ data.search?.reporterRole }}</p>
+        <p><strong>Data do último avistamento:</strong> {{ formatDate(data.search?.disappearanceDate) }}</p>
+        <p><strong>Local do último avistamento:</strong> {{ data.search?.location }}</p>
       </div>
 
       <div class="acoes">
         <router-link :to="`/cartaz/${data.id}`">📄 Visusalizar Cartaz</router-link>
-        <button @click="remove(data.id, data.pet.petName)">❌ Apagar</button>
+        <button @click="remove(data.id, data.pet?.petName)">❌ Apagar</button>
       </div>
     </div>
   </div>
 </template>
 
-
 <script setup>
 
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useRegister } from '@/composables/useRegister';
 
 const { listing, remove} = useRegister()
 
 const list = computed(() => listing())
 
-
-
-onMounted(() => {
-
-  list
-
-});
 
 function formatDate(dateString) {
 
@@ -81,12 +82,18 @@ h2 {
   align-items: center;
 }
 
-.preview-img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
+.image-wrapper {
+   width: 200px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
   border-radius: 8px;
   border: 2px solid #709775;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .info {
