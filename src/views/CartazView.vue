@@ -7,11 +7,9 @@
       <p>Caso você tenha qualquer pista, sugestão, ou palavras de afirmação, não deixe de entrar em contato: </p>
 
       <ul>
-      <li> <strong>email: </strong> {{ data.person.email }}</li>
-
-      <li> <strong>telefone: </strong> {{ data.person.phone }}</li>
-
-    </ul>
+        <li><strong>Email:</strong> {{ data.person.email }}</li>
+        <li><strong>Telefone:</strong> {{ data.person.phone }}</li>
+      </ul>
 
       <img :src="data.pet.photo" alt="Pet que está sendo procurado" v-if="data" class="pet-image" />
 
@@ -28,8 +26,6 @@
         </p>
         <button @click="linkCopy">{{ copied ? 'Copiado!' : 'Copiar Link' }}</button>
       </div>
-
-      <!-- <button @click="shareOnWhatsApp" class="whatsapp-btn">Compartilhar via WhatsApp</button> -->
     </div>
 
     <div v-else class="not-found">
@@ -37,7 +33,6 @@
     </div>
   </div>
 </template>
-
 
 <script setup>
 import { useRoute } from 'vue-router'
@@ -56,31 +51,22 @@ onMounted(() => {
 })
 
 function linkCopy() {
-
   navigator.clipboard.writeText(link.value).then(() => {
-
     copied.value = true
-    setTimeout(() => copied.value = false, 2000)
-
+    setTimeout(() => (copied.value = false), 2000)
   }).catch(err => {
     console.error('Erro ao copiar link: ', err)
   })
 }
 
-
 function formatDate(dateString) {
-
   if (!dateString) return ''
-
   const date = new Date(dateString)
   const day = String(date.getDate()).padStart(2, '0')
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const year = String(date.getFullYear())
-
   return `${day}/${month}/${year}`
 }
-
-
 </script>
 
 <style scoped>
@@ -99,20 +85,24 @@ function formatDate(dateString) {
   padding: 2rem;
   max-width: 700px;
   width: 100%;
-  box-shadow: 0 0 10px rgba(73, 121, 92, 0.2); /* sombra leve verde */
+  box-shadow: 0 0 10px rgba(73, 121, 92, 0.2);
   text-align: center;
 }
 
-.cartaz-box h1, .cartaz-box h2 {
+.cartaz-box h1,
+.cartaz-box h2 {
   color: #49795c;
 }
 
 .pet-image {
+  width: 100%; /* ✅ garante responsividade */
+  height: auto; /* ✅ mantém proporção */
   max-width: 700px;
   margin: 1rem auto;
   display: block;
   border-radius: 10px;
   border: 2px solid #709775;
+  object-fit: cover;
 }
 
 .share-row {
@@ -123,6 +113,12 @@ function formatDate(dateString) {
   padding: 0.5rem 1rem;
   margin-top: 1rem;
   border-radius: 6px;
+  flex-wrap: wrap; /* ✅ permite quebra em telas pequenas */
+}
+
+.share-link {
+  word-break: break-all;
+  flex: 1; /* ✅ ocupa espaço disponível */
 }
 
 .share-link a {
@@ -137,31 +133,46 @@ function formatDate(dateString) {
   padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
+  margin-top: 0.5rem; /* ajuste mobile */
 }
 
 .share-row button:hover {
   background-color: #35684c;
 }
 
-.whatsapp-btn {
-  margin-top: 1rem;
-  background-color: #25D366; /* cor do WhatsApp */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.whatsapp-btn:hover {
-  background-color: #1ebe5d;
-}
-
 .not-found {
   text-align: center;
   font-style: italic;
-  color: #6b4e3d; /* tom terroso de Oxóssi */
+  color: #6b4e3d;
+}
+
+/* ✅ MOBILE: ajustes para telas pequenas */
+@media (max-width: 600px) {
+  .cartaz {
+    padding: 1rem;
+  }
+
+  .cartaz-box {
+    padding: 1rem;
+  }
+
+  .share-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .share-row button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .share-link {
+    width: 100%;
+  }
+
+  .pet-image {
+    width: 100%;
+    height: auto;
+  }
 }
 </style>
-
