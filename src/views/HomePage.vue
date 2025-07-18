@@ -16,9 +16,8 @@
     <section id="sobre" class="section">
       <h2>Sobre o Projeto</h2>
       <p>
-        Quando desaparece um <strong>ser de afetividade</strong> [também chamado de animal de estimação] , não se trata somente de um corpo que não está mais ali, mas também um vínculo afetivo afetivo que modifica drásticamente.
-        Entendemos profundamente essa dor e ansiedade, por isso desenvolvemos o <strong>AgenteAchaPet</strong>, uma plataforma criada para unir pessoas que
-        demandam ajuda às pessoas que desejam participar.
+        Quando desaparece um <strong>ser de afetividade</strong> [também chamado de animal de estimação], não se trata somente de um corpo que não está mais ali, mas também um vínculo afetivo que modifica drásticamente.
+        Entendemos profundamente essa dor e ansiedade, por isso desenvolvemos o <strong>AgenteAchaPet</strong>, uma plataforma que visa incentivar/facilitar pessoas criarem um risoma de apoio mútuo na busca daquele ente de afetividade [por enquanto cachorros].
       </p>
       <p>
         Inspirado nas relações simbióticas do líquen e do lobo-guará, o projeto adota os conceitos de mutualismo e protocooperação.
