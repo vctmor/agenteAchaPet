@@ -8,7 +8,7 @@ O **AgenteAchaPet** um sistema  que visa fomentar que pessoas criem um risoma de
 
 ## 📌 O que é
 
-Simulação de API: localStorage no navegador. Atualmente é um protótipo, mas  [a API já está em construção](https://github.com/vctmor/agenteachapet-api)
+Simulação de API: localStorage no navegador. Atualmente estanos na versão de [protótipo](https://github.com/vctmor/agenteAchaPet/tree/prototipo_navegador), mas  [a API já está em construção](https://github.com/vctmor/agenteachapet-api)
 
 Na versão atual, o **AgenteAchaPet** funciona como um mural virtual de cartazes de busca:
 
@@ -91,8 +91,7 @@ Toda forma de conhtribuição é bem vinda.
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/seu-projeto.git
-
+git clone https://github.com/vctmor/agenteAchaPet/tree/prototipo_navegador
 # Instale as dependências
 npm install
 
