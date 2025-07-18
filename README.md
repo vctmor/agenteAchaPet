@@ -7,6 +7,9 @@ O **AgenteAchaPet**, por ora um protótipo funcional, visa se desdobrar em uma p
 > "Porque cada busca é um *esperançar*, é uma jornada coletiva."
 
 ## ✨ Funcionalidades atuais
+
+Á rigor, as funcionalidades vão girar em torno das necessidades da comunidade e do quanto ela está disposta a custear pelos serviços pagos.
+
 ✅  Cadastro de busca com cartaz digital e link de compartilhamento
 
 ✅  Lista pública de buscas ativas
