@@ -29,11 +29,13 @@ const routes = [
     name: 'formSearch',
     component: FormSearch },
 
-  { path: '/cartaz/:id',
+  { 
+    path: '/cartaz/:id',
     name: 'cartaz',
     component: CartazView },
 
-  { path: '/listar',
+  { 
+    path: '/listar',
     name: 'listar',
     component: ListView },
 
