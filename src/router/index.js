@@ -6,7 +6,7 @@ import Testes from '@/views/Testes.vue'
 import FormSearch from '@/views/FormSearch.vue'
 import CartazView from '@/views/CartazView.vue'
 import ListView from '@/views/ListView.vue'
-import HomePage from '@/views/Sobre.vue'
+import Sobre from '@/views/Sobre.vue'
 import Contato from '@/views/Contato.vue'
 
 const routes = [
