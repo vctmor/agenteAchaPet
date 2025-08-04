@@ -3,7 +3,7 @@
 
   <div id="app">
 
-    <PrototypeWarning v-if="route.name !== 'contato'" />
+    <PrototypeWarning v-if="route.name == 'formSearch' || route.name == 'listar'  " />
 
   </div>
 
