@@ -45,10 +45,16 @@
       </li>
 
       <li>
-        <router-link :to="cartazLink"  target="_blank">
+        
+         <a href="https://agenteachapet.vercel.app/cartaz/undefined" target="_blank">Cartaz de busca ativa </a> 
+      </li>
+<!-- 
+      
+      <li>
+        <router-link :to  target="_blank">
           Cartaz de busca ativa
         </router-link>
-      </li>
+      </li> -->
 
       <li><a href="listar"  target="_blank">Listagem de buscas ativas.</a></li>
     </ul>
@@ -130,8 +136,6 @@
 import { computed } from 'vue'
 
 const STORAGE_KEY = 'registros'
-
-
 
 const cartazLink = computed(() => {
 
