@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/sobre',
     name: 'sobre',
-    component: HomePage
+    component: Sobre
   },
 
   {
