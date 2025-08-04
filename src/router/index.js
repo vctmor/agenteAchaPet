@@ -6,7 +6,7 @@ import Testes from '@/views/Testes.vue'
 import FormSearch from '@/views/FormSearch.vue'
 import CartazView from '@/views/CartazView.vue'
 import ListView from '@/views/ListView.vue'
-import HomePage from '@/views/HomePage.vue'
+import HomePage from '@/views/Sobre.vue'
 import Contato from '@/views/Contato.vue'
 
 const routes = [
@@ -14,11 +14,16 @@ const routes = [
   { path: '/testes',
     name: 'testes',
     component: Testes },
+  {
+    path: '/sobre',
+    name: 'sobre',
+    component: HomePage
+  },
 
   {
     path: '/',
     name: 'inicial',
-    component: HomePage
+    component: Sobre
   },
   { path: '/busca',
     name: 'formSearch',
