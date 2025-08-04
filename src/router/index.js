@@ -11,20 +11,20 @@ import Contato from '@/views/Contato.vue'
 
 const routes = [
 
-  { path: '/testes',
+  { 
+    path: '/testes',
     name: 'testes',
     component: Testes },
   {
     path: '/sobre',
     name: 'sobre',
-    component: Sobre
-  },
+    component: Sobre },
 
   {
     path: '/',
     name: 'inicial',
-    component: Sobre
-  },
+    component: Sobre },
+
   { path: '/busca',
     name: 'formSearch',
     component: FormSearch },
