@@ -28,7 +28,7 @@
       <label for="necessidades">Tem necessidades especiais?</label>
       <textarea
         id="necessidades"
-        v-model.trim="search.specialNeed"
+        v-model.trim="search.specialNeed.description"
         placeholder="Como comorbidades, se toma remédios..."
       />
     </div>
@@ -96,7 +96,9 @@ const search = reactive({
   disappearanceDate: '',
   location: '',
   additionalNotes: '',
-  specialNeed: ''
+  specialNeed: {
+    description: ''
+  }
 })
 
 function previewImage(e) {
@@ -124,7 +126,7 @@ async function submitForm() {
         reporterRole: search.reporterRole,
         disappearanceDate: search.disappearanceDate,
         location: search.location,
-        specialNeed: search.specialNeed ,
+        specialNeed: { ...search.specialNeed },
         additionalNotes: search.additionalNotes
       }
     }
