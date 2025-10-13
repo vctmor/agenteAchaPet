@@ -7,17 +7,17 @@
     <p v-else-if="error">Erro: {{ error }}</p>
 
     <div v-else-if="data" class="card">
-      <h3 class="pet-name">{{ data.pet?.petName || 'Sem nome' }}</h3>
+      <h3 class="pet-name">{{ pet.petName || 'Sem nome' }}</h3>
 
       <img v-if="imageSrc" :src="imageSrc" alt="Foto do pet" class="preview-img" />
       <div v-else class="no-photo">Sem foto cadastrada</div>
 
       <ul class="details">
-        <li><strong>Cor:</strong> {{ data.pet?.color || '—' }}</li>
-        <li><strong>Raça:</strong> {{ data.pet?.breed || '—' }}</li>
-        <li><strong>Idade:</strong> {{ data.pet?.age ?? '—' }}</li>
+        <li><strong>Cor:</strong> {{ pet.color || '—' }}</li>
+        <li><strong>Raça:</strong> {{ pet.breed || '—' }}</li>
+        <li><strong>Idade:</strong> {{ pet.age ?? '—' }}</li>
         <li><strong>Contato:</strong> {{ data.reporter?.phone || data.reporter?.email || '—' }}</li>
-        <li><strong>Slug:</strong> {{ data.slug }}</li>
+        <li><strong>Slug:</strong> {{ data.slug || '—' }}</li>
       </ul>
     </div>
 
@@ -30,38 +30,59 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { apiUrl } from '@/utils/api'
 
-const API_BASE = import.meta.env.VITE_API_BASE + '/api/v1'; // ex.: https://agenteachapet.onrender.com/api/v1
 const route = useRoute()
 
 const loading = ref(true)
 const error = ref(null)
 const data = ref(null)
 
+const pet = computed(() => data?.value || {})
+
 const imageSrc = computed(() => {
-  const pet = data.value?.pet
-  if (!pet) return null
+
+   const photoUrl = apiUrl(`${data.value.id}/photo`);
+
+
+
+  if (!data.value) return null
+    alert(data.value.petName)
   // 1) Preferir URL direta se o backend já montar
-  if (pet.photoUrl) return pet.photoUrl
+  if (data.value.photoUrl) return data.value.photoUrl
   // 2) Caso só exista o id da foto, usar o endpoint padronizado /api/v1/pet-searches/{id}/photo
-  if (pet.photoId) return `${API_BASE}/pet-searches/${pet.photoId}/photo`
+  if (data.value.petId) return photoUrl
   return null
 })
 
 onMounted(async () => {
   try {
-    const slug = route.params.slug
-    const resp = await fetch(`${API_BASE}/pet-searches/${slug}`, {
+    const slug = route.params.slug;
+    console.log('Slug recebido:', slug);
+
+    const endPointslug = apiUrl(`${slug}`);
+    console.log('Endpoint gerado:', endPointslug);
+
+    const resp = await fetch(endPointslug, {
       headers: { Accept: 'application/json' }
-    })
-    if (!resp.ok) throw new Error(`Falha ao carregar cartaz (${resp.status})`)
-    data.value = await resp.json()
+    });
+
+    console.log('Status da resposta:', resp.status);
+
+    if (!resp.ok) throw new Error(`Falha ao carregar cartaz (${resp.status})`);
+
+    data.value = await resp.json();
+    console.log('Dados recebidos:', data.value);
+
   } catch (e) {
-    error.value = e.message
+    console.error('Erro na requisição:', e);
+    error.value = e.message;
   } finally {
-    loading.value = false
+    console.log('Finalizando carregamento');
+    loading.value = false;
   }
-})
+});
+
 </script>
 
 <style scoped>

@@ -70,11 +70,9 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { apiUrl } from '@/utils/api'
 
 const router = useRouter()
-
-const API_BASE =
-  import.meta.env.VITE_API_URL?.replace(/\/+$/, '') || 'http://localhost:8080'
 
 const submitting = ref(false)
 const image = ref(null)
@@ -105,7 +103,9 @@ const search = reactive({
 
 function previewImage(e) {
   const file = e.target.files?.[0]
+
   if (!file) return
+
   image.value = file
   preview.value = URL.createObjectURL(file)
 }
@@ -113,7 +113,9 @@ function previewImage(e) {
 async function openCartaz(result) {
 
   const slug = result?.slug ?? result?.id
+
   if (!slug) throw new Error('Resposta sem slug/id. Arrume o backend.')
+
   await router.push({ name: 'cartaz', params: { slug } })
 }
 async function submitForm() {
@@ -138,11 +140,13 @@ async function submitForm() {
 
     const formData = new FormData()
 
+    const endPonitPetSearches = apiUrl('pet-searches');
+
     formData.append('data', new Blob([JSON.stringify(payload)], { type: 'application/json' }))
 
     if (image.value) formData.append('photo', image.value)
 
-    const resp = await fetch(`${API_BASE}/api/v1/pet-searches`, {
+    const resp = await fetch(endPonitPetSearches, {
       method: 'POST',
       body: formData,
       headers: { Accept: 'application/json' }
