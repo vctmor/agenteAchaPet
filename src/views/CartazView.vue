@@ -38,20 +38,21 @@ const loading = ref(true)
 const error = ref(null)
 const data = ref(null)
 
-const pet = computed(() => data?.value || {})
+const pet = computed(() => data?.value.pet || {})
 
 const imageSrc = computed(() => {
 
-   const photoUrl = apiUrl(`${data.value.id}/photo`);
+   const photoUrl = apiUrl('pet-searches/' + `${data.value.pet.id}/photo`);
 
-
+  alert('photoUrl: ' + photoUrl) 
 
   if (!data.value) return null
-    alert(data.value.petName)
+    alert('Pet name:' + data.value.pet.petName)
+    alert('Reporter:' + data.value.reporter)
   // 1) Preferir URL direta se o backend já montar
-  if (data.value.photoUrl) return data.value.photoUrl
+  if (data.value.pet?.photoUrl) return data.value.pet.photoUrl
   // 2) Caso só exista o id da foto, usar o endpoint padronizado /api/v1/pet-searches/{id}/photo
-  if (data.value.petId) return photoUrl
+  if (data.value?.pet.id) return photoUrl
   return null
 })
 
@@ -60,7 +61,7 @@ onMounted(async () => {
     const slug = route.params.slug;
     console.log('Slug recebido:', slug);
 
-    const endPointslug = apiUrl(`${slug}`);
+    const endPointslug = apiUrl('pet-searches/' + `${slug}`);
     console.log('Endpoint gerado:', endPointslug);
 
     const resp = await fetch(endPointslug, {
