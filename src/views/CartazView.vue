@@ -16,8 +16,10 @@
         <li><strong>Cor:</strong> {{ pet.color || '—' }}</li>
         <li><strong>Raça:</strong> {{ pet.breed || '—' }}</li>
         <li><strong>Idade:</strong> {{ pet.age ?? '—' }}</li>
+        <li><strong>Contato:</strong> {{ data.reporter?.role || data.reporter?.email || '—' }}</li>
         <li><strong>Contato:</strong> {{ data.reporter?.phone || data.reporter?.email || '—' }}</li>
         <li><strong>Slug:</strong> {{ data.slug || '—' }}</li>
+        
       </ul>
     </div>
 
