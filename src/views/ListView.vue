@@ -1,7 +1,8 @@
+
 <template>
   <div class="listagem">
     <h2>Buscas Ativas</h2>
-    <div v-if="list.length === 0">Nenhum cadastro ainda.</div>
+    <div v-if="data === 0">Nenhum cadastro ainda.</div>
 
     <div v-for="data in list" :key="data.id" class="registro">
       <img :src="data.pet.photo" class="preview-img" />
@@ -22,13 +23,33 @@
   </div>
 </template>
 
-
 <script setup>
-import { computed } from 'vue'
-import { useRegister } from '@/composables/useRegister';
+import { apiUrl } from '@/utils/api'
 
-const { listing, remove } = useRegister()
-const list = computed(() => listing())
+// import { computed } from 'vue'
+// alert('oi')
+
+async function loadPets(){
+
+  const endPointListPets = apiUrl('pet-searches');
+alert('oi')
+  try {
+
+    const resp = await fetch(endPointListPets, { method:'GET'});
+
+    if (!resp.ok) throw new Error(`Erro: ${resp.status}`);
+
+    const data = await resp.json();
+    alert("oi")
+    console.log(data);
+
+  } catch (err) {
+
+    console.error('Falha na requisição:', err);
+  }
+}
+
+window.addEventListener('load', loadPets)
 
 function formatDate(dateString) {
 
