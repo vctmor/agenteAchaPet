@@ -1,26 +1,30 @@
 
 import { createRouter, createWebHistory} from 'vue-router'
-import PetForm from '@/views/PetForm.vue'
-import PetList from '@/views/PetList.vue'
-import Cartaz from '@/views/Cartaz.vue'
+
 import Testes from '@/views/Testes.vue'
 
+import FormView from '@/views/FormView.vue'
+import CartazView from '@/views/CartazView.vue'
+import ListView from '@/views/ListView.vue'
+
 const routes = [
-  { path: '/',
-    name: 'PetForm',
-    component: PetForm },
-
-  { path: '/pets',
-    name: 'PetList',
-    component: PetList},
-
-  { path: '/cartaz/:slug',
-    name: 'Cartaz',
-    component: Cartaz,},
 
   { path: '/testes',
     name: 'testes',
-    component: Testes }
+    component: Testes },
+
+  { path: '/',
+    name: 'formView',
+    component: FormView },
+
+  { path: '/cartaz/:slug',
+    name: 'cartaz',
+    component: CartazView,
+    props: true },
+
+  { path: '/listar',
+    name: 'listar',
+    component: ListView },
 ]
 
 export default createRouter({
