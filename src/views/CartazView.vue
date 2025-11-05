@@ -19,7 +19,7 @@
         <li><strong>Contato:</strong> {{ data.reporter?.role || data.reporter?.email || '—' }}</li>
         <li><strong>Contato:</strong> {{ data.reporter?.phone || data.reporter?.email || '—' }}</li>
         <li><strong>Slug:</strong> {{ data.slug || '—' }}</li>
-        
+
       </ul>
     </div>
 
@@ -46,11 +46,11 @@ const imageSrc = computed(() => {
 
    const photoUrl = apiUrl('pet-searches/' + `${data.value.pet.id}/photo`);
 
-  alert('photoUrl: ' + photoUrl) 
+
 
   if (!data.value) return null
-    alert('Pet name:' + data.value.pet.petName)
-    alert('Reporter:' + data.value.reporter)
+
+
   // 1) Preferir URL direta se o backend já montar
   if (data.value.pet?.photoUrl) return data.value.pet.photoUrl
   // 2) Caso só exista o id da foto, usar o endpoint padronizado /api/v1/pet-searches/{id}/photo
