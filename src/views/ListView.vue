@@ -21,7 +21,6 @@
       />
 
       <div class="info">
-<<<<<<< HEAD
         <p><strong>Nome do pet:</strong> {{ item.pet?.petName || '—' }}</p>
         <p><strong>Nome do tutor/relator:</strong> {{ item.reporter?.name || '—' }}</p>
         <p><strong>Papel do relator:</strong> {{ item.reporter?.role || '—' }}</p>
@@ -34,18 +33,6 @@
 
       <div class="acoes">
         <router-link :to="`/cartaz/${item.slug}`">📄 Visualizar Cartaz de Busca</router-link>
-=======
-        <p><strong>Nome do pet:</strong> {{ data.pet.petName }}</p>
-        <p><strong>Quem convoca a busca:</strong> {{ data.person.personName }}</p>
-        <p><strong>Papel do relator:</strong> {{ data.search.reporterRole }}</p>
-        <p><strong>Data do último avistamento:</strong> {{ formatDate(data.search.disappearanceDate) }}</p>
-        <p><strong>Local do último avistamento:</strong> {{ data.search.location }}</p>
-      </div>
-
-      <div class="acoes">
-        <router-link :to="`/cartaz/${data.id}`">📄 Visusalizar Cartaz</router-link>
-        <button @click="remove(data.id, data.pet.petName)">❌ Apagar</button>
->>>>>>> 90567f280c80e025e637b10dbfb7be7a1d029bc2
       </div>
     </div>
   </div>
@@ -55,7 +42,6 @@
 import { ref, onMounted } from 'vue'
 import { apiUrl } from '@/utils/api'
 
-<<<<<<< HEAD
 let list = ref([])
 const loading = ref(false)
 const error = ref(null)
@@ -98,10 +84,6 @@ async function loadPets(){
 }
 // window.addEventListener('load', loadPets)
 onMounted(loadPets)
-=======
-const { listing, remove} = useRegister()
-const list = computed(() => listing())
->>>>>>> 90567f280c80e025e637b10dbfb7be7a1d029bc2
 
 function formatDate(dateString) {
   if (!dateString) return '—'
