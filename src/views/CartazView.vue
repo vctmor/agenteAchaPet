@@ -29,6 +29,7 @@
   </div>
 </template>
 
+
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
@@ -85,6 +86,39 @@ onMounted(async () => {
     loading.value = false;
   }
 });
+
+const link = ref('')
+const copied = ref(false)
+
+onMounted(() => {
+  link.value = window.location.href
+})
+
+function linkCopy() {
+
+  navigator.clipboard.writeText(link.value).then(() => {
+
+    copied.value = true
+    setTimeout(() => copied.value = false, 2000)
+
+  }).catch(err => {
+    console.error('Erro ao copiar link: ', err)
+  })
+}
+
+
+function formatDate(dateString) {
+
+  if (!dateString) return ''
+
+  const date = new Date(dateString)
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = String(date.getFullYear())
+
+  return `${day}/${month}/${year}`
+}
+
 
 </script>
 
