@@ -1,28 +1,29 @@
+<!-- src/views/CartazView.vue -->
 <template>
   <div class="cartaz">
-    <div v-if="data" class="cartaz-box">
-      <h1>🧭 Uma Jornada Começa!</h1>
-      <h2>🐾 {{ data.pet.petName }} foi avistado pela última vez em {{ data.search.location }}</h2>
-      <p>Convocamos toda a comunidade para apoiar <strong>{{ data.person.personName }}</strong>.</p>
+    <h2>Cartaz de Busca Ativa</h2>
 
-      <img :src="data.pet.photo" alt="Pet que está sendo procurado" v-if="data" class="pet-image" />
+    <p v-if="loading">Carregando…</p>
+    <p v-else-if="error">Erro: {{ error }}</p>
 
-      <p>
-        <strong>{{ data.pet.petName }} está fora do seu lar desde:</strong>
-        {{ formatDate(data.search.disappearanceDate) }}
-      </p>
+    <div v-else-if="data" class="card">
+      <h3 class="pet-name">{{ pet.petName || 'Sem nome' }}</h3>
 
-      <div class="share-row">
-        <p class="share-link">
-          📣 Compartilhe o cartaz em todas as suas redes: <a :href="link" target="_blank">{{ link }}</a>
-        </p>
-        <button @click="linkCopy">{{ copied ? 'Copiado!' : 'Copiar Link' }}</button>
-      </div>
+      <img v-if="imageSrc" :src="imageSrc" alt="Foto do pet" class="preview-img" />
+      <div v-else class="no-photo">Sem foto cadastrada</div>
 
-      <!-- <button @click="shareOnWhatsApp" class="whatsapp-btn">Compartilhar via WhatsApp</button> -->
+      <ul class="details">
+        <li><strong>Cor:</strong> {{ pet.color || '—' }}</li>
+        <li><strong>Raça:</strong> {{ pet.breed || '—' }}</li>
+        <li><strong>Idade:</strong> {{ pet.age ?? '—' }}</li>
+        <li><strong>Contato:</strong> {{ data.reporter?.role || data.reporter?.email || '—' }}</li>
+        <li><strong>Contato:</strong> {{ data.reporter?.phone || data.reporter?.email || '—' }}</li>
+        <li><strong>Slug:</strong> {{ data.slug || '—' }}</li>
+
+      </ul>
     </div>
 
-    <div v-else class="not-found">
+    <div v-else>
       <p>Cadastro não encontrado.</p>
     </div>
   </div>
@@ -30,13 +31,61 @@
 
 
 <script setup>
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useRegister } from '@/composables/useRegister'
-import { ref, onMounted } from 'vue'
+import { apiUrl } from '@/utils/api'
 
 const route = useRoute()
-const { findById } = useRegister()
-const data = findById(route.params.id)
+
+const loading = ref(true)
+const error = ref(null)
+const data = ref(null)
+
+const pet = computed(() => data?.value.pet || {})
+
+const imageSrc = computed(() => {
+
+   const photoUrl = apiUrl('pet-searches/' + `${data.value.pet.id}/photo`);
+
+
+
+  if (!data.value) return null
+
+
+  // 1) Preferir URL direta se o backend já montar
+  if (data.value.pet?.photoUrl) return data.value.pet.photoUrl
+  // 2) Caso só exista o id da foto, usar o endpoint padronizado /api/v1/pet-searches/{id}/photo
+  if (data.value?.pet.id) return photoUrl
+  return null
+})
+
+onMounted(async () => {
+  try {
+    const slug = route.params.slug;
+    console.log('Slug recebido:', slug);
+
+    const endPointslug = apiUrl('pet-searches/' + `${slug}`);
+    console.log('Endpoint gerado:', endPointslug);
+
+    const resp = await fetch(endPointslug, {
+      headers: { Accept: 'application/json' }
+    });
+
+    console.log('Status da resposta:', resp.status);
+
+    if (!resp.ok) throw new Error(`Falha ao carregar cartaz (${resp.status})`);
+
+    data.value = await resp.json();
+    console.log('Dados recebidos:', data.value);
+
+  } catch (e) {
+    console.error('Erro na requisição:', e);
+    error.value = e.message;
+  } finally {
+    console.log('Finalizando carregamento');
+    loading.value = false;
+  }
+});
 
 const link = ref('')
 const copied = ref(false)
@@ -74,84 +123,11 @@ function formatDate(dateString) {
 </script>
 
 <style scoped>
-.cartaz {
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
-  background-color: #e6f0e6; /* verde-claro Oxóssi */
-  font-family: sans-serif;
-}
-
-.cartaz-box {
-  background-color: #f8fff8;
-  border: 1px solid #709775;
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 700px;
-  width: 100%;
-  box-shadow: 0 0 10px rgba(73, 121, 92, 0.2); /* sombra leve verde */
-  text-align: center;
-}
-
-.cartaz-box h1, .cartaz-box h2 {
-  color: #49795c;
-}
-
-.pet-image {
-  max-width: 700px;
-  margin: 1rem auto;
-  display: block;
-  border-radius: 10px;
-  border: 2px solid #709775;
-}
-
-.share-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #dfe6df;
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  border-radius: 6px;
-}
-
-.share-link a {
-  color: #35684c;
-  text-decoration: none;
-}
-
-.share-row button {
-  background-color: #49795c;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.share-row button:hover {
-  background-color: #35684c;
-}
-
-.whatsapp-btn {
-  margin-top: 1rem;
-  background-color: #25D366; /* cor do WhatsApp */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.whatsapp-btn:hover {
-  background-color: #1ebe5d;
-}
-
-.not-found {
-  text-align: center;
-  font-style: italic;
-  color: #6b4e3d; /* tom terroso de Oxóssi */
-}
+.cartaz { max-width: 720px; margin: 0 auto; padding: 16px; }
+.card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 16px; }
+.pet-name { margin: 0 0 12px; font-size: 1.5rem; }
+.preview-img { display: block; width: 100%; max-width: 420px; border-radius: 8px; }
+.no-photo { padding: 24px; border: 1px dashed #555; border-radius: 8px; text-align: center; }
+.details { list-style: none; padding: 0; margin-top: 12px; display: grid; gap: 6px; }
+.details li { font-size: 0.95rem; }
 </style>
-

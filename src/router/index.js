@@ -17,9 +17,10 @@ const routes = [
     name: 'formView',
     component: FormView },
 
-  { path: '/cartaz/:id',
+  { path: '/cartaz/:slug',
     name: 'cartaz',
-    component: CartazView },
+    component: CartazView,
+    props: true },
 
   { path: '/listar',
     name: 'listar',

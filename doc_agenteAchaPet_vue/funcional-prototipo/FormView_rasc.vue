@@ -7,7 +7,7 @@
     <h3>👤 Etapa 1: Quem está convocando a travessia!?</h3>
     <input v-model.trim="person.name" placeholder="Como prefere que te chame" required />
 
-    <select v-model.trim="search.reporterRole" required>
+    <select v-model="search.reporterRole" required>
       <option disabled value="">Qual vai ser seu papel nesta jornada?</option>
       <option value="TUTOR">Tutor</option>
       <!-- <option value="BASTIAN">Bastião</option> -->
@@ -28,7 +28,7 @@
       <label for="necessidades">Tem necessidades especiais?</label>
       <textarea
         id="necessidades"
-        v-model.trim="search.specialNeed"
+        v-model.trim="search.specialNeed.description"
         placeholder="Como comorbidades, se toma remédios..."
       />
     </div>
@@ -69,10 +69,9 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
-import { apiUrl } from '@/utils/api'
 
-const router = useRouter()
+const API_BASE =
+  import.meta.env.VITE_API_URL?.replace(/\/+$/, '') || 'http://localhost:8080'
 
 const submitting = ref(false)
 const image = ref(null)
@@ -81,8 +80,7 @@ const preview = ref(null)
 const person = reactive({
   name: '',
   phone: '',
-  email: '',
-  // role: 'REPORTER'
+  email: ''
 })
 
 const pet = reactive({
@@ -98,32 +96,27 @@ const search = reactive({
   disappearanceDate: '',
   location: '',
   additionalNotes: '',
-  specialNeed: ''
+  specialNeed: {
+    description: ''
+  }
 })
 
 function previewImage(e) {
   const file = e.target.files?.[0]
-
   if (!file) return
-
   image.value = file
   preview.value = URL.createObjectURL(file)
 }
 
 async function openCartaz(result) {
-
-  const slug = result?.slug ?? result?.id
-
-  if (!slug) throw new Error('Resposta sem slug/id. Arrume o backend.')
-
-  await router.push({ name: 'cartaz', params: { slug } })
+  // backend retorna { slug: "..." }
+  const url = `/cartaz/${result.slug}`
+  window.open(url, '_blank')
 }
+
 async function submitForm() {
-
   if (submitting.value) return
-
   try {
-
     submitting.value = true
 
     const payload = {
@@ -133,20 +126,16 @@ async function submitForm() {
         reporterRole: search.reporterRole,
         disappearanceDate: search.disappearanceDate,
         location: search.location,
-        specialNeed: search.specialNeed ,
+        specialNeed: { ...search.specialNeed },
         additionalNotes: search.additionalNotes
       }
     }
 
     const formData = new FormData()
-
-    const endPonitPetSearches = apiUrl('pet-searches');
-
     formData.append('data', new Blob([JSON.stringify(payload)], { type: 'application/json' }))
-
     if (image.value) formData.append('photo', image.value)
 
-    const resp = await fetch(endPonitPetSearches, {
+    const resp = await fetch(`${API_BASE}/pet-searches`, {
       method: 'POST',
       body: formData,
       headers: { Accept: 'application/json' }
@@ -155,23 +144,16 @@ async function submitForm() {
     if (!resp.ok) {
       // tenta extrair mensagem útil
       const text = await resp.text().catch(() => '')
-          throw new Error(text || `HTTP ${resp.status}`)
+      throw new Error(text || `HTTP ${resp.status}`)
     }
 
     const result = await resp.json()
-
     alert('Cadastro realizado com sucesso!')
-
     await openCartaz(result)
-
   } catch (err) {
-
     console.error(err)
-
     alert('Erro ao cadastrar anúncio.')
-
   } finally {
-
     submitting.value = false
   }
 }
